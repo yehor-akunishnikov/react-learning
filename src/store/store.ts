@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 
-import * as fromCharacter from "../features/character/store";
+import * as fromCharacter from "../features/character/data/store";
 
 export interface AppState {
     [fromCharacter.featureKey]: fromCharacter.FeatureState;

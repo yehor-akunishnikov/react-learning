@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {store} from "./store/store";
-import {loadThunk} from "./features/character/slices/characters/data/thunks";
+import {loadAll} from "./features/character/data/thunks/characters.thunk";
 
 function App() {
   useEffect(() => {
-    store.dispatch(loadThunk());
+    store.dispatch(loadAll());
   },[]);
 
   return (
