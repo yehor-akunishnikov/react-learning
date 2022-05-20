@@ -2,10 +2,11 @@ import {combineReducers} from '@reduxjs/toolkit';
 
 import * as fromCharactersReducer from './reducers/characters.reducer';
 import * as fromCharactersLoadingReducer from './reducers/characters-loading-state.reducer';
-import {AppState} from "../../../store/store";
+import {AppState} from "../../../store";
 
 export interface FeatureState {
     [fromCharactersReducer.key]: fromCharactersReducer.State;
+    [fromCharactersLoadingReducer.key]: fromCharactersLoadingReducer.State;
 }
 
 export const featureKey = '[DATA LAYER] Character';
@@ -21,6 +22,9 @@ export const featureReducer = combineReducers({
 export const featureSelector = (state: AppState): FeatureState => state[featureKey];
 
 export const charactersSelectors = fromCharactersReducer.adapter.getSelectors();
-export const charactersSelector = (state: AppState): fromCharactersReducer.State => {
-    return featureSelector(state)[fromCharactersReducer.key];
-}
+
+export const charactersSelector = (state: AppState): fromCharactersReducer.State =>
+    featureSelector(state)[fromCharactersReducer.key];
+
+export const charactersLoadingSelector = (state: AppState): fromCharactersLoadingReducer.State =>
+    featureSelector(state)[fromCharactersLoadingReducer.key];

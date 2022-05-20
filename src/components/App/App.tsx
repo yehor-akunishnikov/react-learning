@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import logo from './logo.svg';
+import logo from '../../logo.svg';
 import './App.css';
-import {store} from "./store/store";
-import {loadAll} from "./features/character/data/thunks/characters.thunk";
+import {store} from "../../store/store";
+import {loadAll} from "../../store/features/character/data/thunks/characters.thunk";
 
 function App() {
   useEffect(() => {
