@@ -9,7 +9,7 @@ export interface FeatureState {
     [fromCharactersLoadingReducer.key]: fromCharactersLoadingReducer.State;
 }
 
-export const featureKey = '[DATA LAYER] Character';
+export const featureKey = '[DATA LAYER] CharacterCard';
 
 export const featureReducer = combineReducers({
     [fromCharactersReducer.key]: fromCharactersReducer.reducer,
