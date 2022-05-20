@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {store} from "./store/store";
+import {load} from "./features/characters/data/thunks";
 
 function App() {
+  useEffect(() => {
+    store.dispatch(load());
+  },[]);
+
   return (
     <div className="App">
       <header className="App-header">
