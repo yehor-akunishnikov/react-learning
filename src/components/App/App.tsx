@@ -1,17 +1,13 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+
 import './App.css';
-import {store} from "../../store/store";
-import {loadAll} from "../../store/features/character/data/thunks/characters.thunk";
-import {CharactersWrapper} from "../../pages/Characters/data-wrapper";
+
+import {Characters} from "../../pages/Characters";
 
 function App() {
-  useEffect(() => {
-    store.dispatch(loadAll());
-  },[]);
-
-  return (
-    <CharactersWrapper></CharactersWrapper>
-  );
+    return (
+        <Characters></Characters>
+    );
 }
 
 export default App;

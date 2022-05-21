@@ -1,13 +1,19 @@
 import React from "react";
 
-import {MappedProps} from "./data-wrapper";
-import {CharacterCard} from "../../components/CharacterCard";
+import {useLoadAllQuery} from "../../store/features/character";
 
-export const Characters = (props: MappedProps) => {
-    const characters = props.characters.map(character => {
-        return (<CharacterCard data={character} key={character.id}></CharacterCard>)
-    });
+import {CharacterCard} from '../../components/CharacterCard';
+
+export const Characters = () => {
+    const {data = [], isLoading} = useLoadAllQuery(null);
+
+    const cards = !isLoading ? data.map(character => (
+        <CharacterCard
+            data={character}
+            key={character.id}/>
+    )) : (<div>Loading...</div>);
+
     return (<>
-        {characters}
+        {cards}
     </>);
 }

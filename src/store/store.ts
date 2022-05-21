@@ -1,15 +1,16 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {combineReducers, configureStore} from '@reduxjs/toolkit';
 
-import * as fromCharacter from "./features/character/data/store";
+import {characterApi} from './features/character';
 
-export interface AppState {
-    [fromCharacter.featureKey]: fromCharacter.FeatureState;
-}
+const rootReducer = combineReducers({
+    [characterApi.reducerPath]: characterApi.reducer,
+});
 
 export const store = configureStore({
-    reducer: {
-        [fromCharacter.featureKey]: fromCharacter.featureReducer,
-    },
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(characterApi.middleware),
 })
 
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
